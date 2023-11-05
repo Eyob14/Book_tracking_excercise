@@ -29,7 +29,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "mysql://haile:passWordHaile@mysql:3306/mydatabase"
+      DATABASE_URL: "mysql://eyob:passWordEyob@mysql:3306/bookStore"
     depends_on:
       - mysql
     volumes:
@@ -38,9 +38,9 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: haile
-      MYSQL_PASSWORD: passWordHaile
+      MYSQL_DATABASE: bookStore
+      MYSQL_USER: eyob
+      MYSQL_PASSWORD: passWordEyob
       MYSQL_ROOT_PASSWORD: rootpassword
     volumes:
       - mysql-data:/var/lib/mysql
