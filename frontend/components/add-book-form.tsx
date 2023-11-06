@@ -54,12 +54,14 @@ export default function AddBookForm({ setIsNewBookAdded }: AddBookFormProp) {
         } catch (err) {
             toast({
                 description: "Could not connect to the server, please try again later.",
+                variant: "destructive"
             })
             return;
         }
         if (response.status !== 200) {
             toast({
                 description: "Something went wrong",
+                variant: "destructive"
             })
             return;
         }
@@ -78,10 +80,9 @@ export default function AddBookForm({ setIsNewBookAdded }: AddBookFormProp) {
                     name="title"
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-2">
-
-                            <FormLabel>Book Title</FormLabel>
-                            <FormControl className="w-60">
-                                <Input placeholder="title" {...field} />
+                            <FormLabel className="text-lg font-bold">Book Title</FormLabel>
+                            <FormControl className="w-72">
+                                <Input placeholder="Book Title" {...field} />
                             </FormControl>
                             <FormMessage />
 

@@ -14,22 +14,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    command:
-      [
-        "./wait-for-it.sh",
-        "mysql:3306",
-        "--",
-        "uvicorn",
-        "main:app",
-        "--host",
-        "0.0.0.0",
-        "--port",
-        "8000",
-      ]
+    command: ["./wait-for-it.sh", "mysql:3306", "--", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "mysql://eyob:passWordEyob@mysql:3306/bookStore"
+      DATABASE_URL: "mysql://eyob:passWordEyob@mysql:3306/bookstore"
     depends_on:
       - mysql
     volumes:
@@ -38,24 +27,14 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: bookStore
+      MYSQL_DATABASE: bookstore
       MYSQL_USER: eyob
       MYSQL_PASSWORD: passWordEyob
       MYSQL_ROOT_PASSWORD: rootpassword
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test:
-        [
-          "CMD",
-          "mysqladmin",
-          "ping",
-          "-h",
-          "localhost",
-          "-u",
-          "root",
-          "--password=rootpassword",
-        ]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=rootpassword"]
       interval: 10s
       timeout: 5s
       retries: 5

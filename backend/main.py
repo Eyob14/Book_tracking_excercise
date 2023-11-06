@@ -10,7 +10,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from model.book import Book
 from repository.book_repository import BookRepository
-from db_util import get_db
+from db_util import get_database_connection
 
 app = FastAPI()
 app.add_middleware(
@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 APP_HOST = os.environ.get("APP_HOST")
-DATABASE_CONNECTION = get_db()
+DATABASE_CONNECTION = get_database_connection()
 repository = BookRepository(DATABASE_CONNECTION)
 
 

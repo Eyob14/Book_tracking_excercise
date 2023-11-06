@@ -51,6 +51,7 @@ export default function Home() {
     } catch (err) {
       toast({
         description: "Check your internet connection and try again later.",
+        variant: "destructive"
       })
 
       removed.status = source;
@@ -85,6 +86,7 @@ export default function Home() {
     } catch (err) {
       toast({
         description: "Could not connect to the server, please try again later.",
+        variant: "destructive"
       })
       source.push(removed);
       setBooks({
@@ -96,6 +98,7 @@ export default function Home() {
     if (response.status !== 200) {
       toast({
         description: "Something went wrong",
+        variant: "destructive"
       })
       return;
     }
@@ -117,12 +120,14 @@ export default function Home() {
       } catch (err) {
         toast({
           description: "Could not connect to the server, please try again later.",
+          variant: "destructive"
         })
         return;
       }
       if (response.status !== 200) {
         toast({
           description: "Something went wrong, please try again later.",
+          variant: "destructive"
         })
         return;
       }
@@ -140,7 +145,7 @@ export default function Home() {
 
       <div className="flex justify-between p-10 gap-10">
         {/* to-read Column */}
-        <div className="w-1/3 p-4 border bg-red-50 rounded">
+        <div className="w-1/3 p-4 border bg-gray-200 rounded">
           <ListBookSection
             title="To Be Read"
             books={books.to_be_read}
@@ -149,7 +154,7 @@ export default function Home() {
           />
         </div>
         {/* in_progress Column */}
-        <div className="w-1/3 p-4 border bg-yellow-50 rounded">
+        <div className="w-1/3 p-4 border bg-gray-200 rounded">
           <ListBookSection
             title="In progress"
             books={books.in_progress}
@@ -159,7 +164,7 @@ export default function Home() {
         </div>
 
         {/* Completed Column */}
-        <div className="w-1/3 p-4 border bg-green-50 rounded">
+        <div className="w-1/3 p-4 border bg-gray-200 rounded">
           <ListBookSection
             title="Completed"
             books={books.completed}
